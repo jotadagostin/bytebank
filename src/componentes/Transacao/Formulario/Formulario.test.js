@@ -9,13 +9,13 @@ describe('Deve renderizar um campo de input', () => {
     expect(campoTexto).toBeInTheDocument();
   });
 
-  test('com o type number', () => {
+  test(' com o type number', () => {
     render(<Formulario />);
     const campoTexto = screen.getByPlaceholderText('Digite um valor');
     expect(campoTexto).toHaveAttribute('type', 'number');
   });
 
-  test('e que pode ser preenchido', () => {
+  test(' que pode ser preenchido', () => {
     render(<Formulario />);
     const campoTexto = screen.getByPlaceholderText('Digite um valor');
     userEvent.type(campoTexto, '50');
@@ -23,10 +23,12 @@ describe('Deve renderizar um campo de input', () => {
   });
 });
 
-test('Deve chamar um evento onSubmit ao clicar em realizar transacao', () => {
+test('Deve chamar um evento de onSubmit ao clicar em realizar transação', () => {
   const realizarTransacao = jest.fn();
+
   render(<Formulario realizarTransacao={realizarTransacao} />);
   const botao = screen.getByRole('button');
+
   userEvent.click(botao);
-  expect(realizarTransacao).toHaveBeenCalled(1);
+  expect(realizarTransacao).toHaveBeenCalledTimes(1);
 });
